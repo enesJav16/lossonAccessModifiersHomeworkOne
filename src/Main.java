@@ -2,14 +2,31 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Country country1=new Country("Kyrgyzstan",7.1,199.951,"Kyrgyz, Russian");
+        Country country2=new Country("Kazakhstan",19.6,2724.9,"Kazakh,Russian");
+        Country country3=new Country("Uzbekistan",36.5,448.978,"Uzbek");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Country []countries={country1,country2,country3};
+
+        country1.print();
+        System.out.println("==============================");
+        country2.print();
+        System.out.println("==============================");
+        country3.print();
+
+        System.out.println("==============================");
+        System.out.println("===COUNTRY WITH BIGGEST AREA==");
+        getBiggestArea(countries).print();
+
+    }
+    static Country getBiggestArea(Country[]countries){
+        Country biggestArea=new Country();
+        biggestArea=countries[0];
+        for (int i = 0; i < countries.length-1; i++) {
+            if(countries[i].getArea()>countries[i+1].getArea()){
+                biggestArea=countries[i];
+            }
         }
+        return biggestArea;
     }
 }
